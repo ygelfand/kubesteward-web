@@ -163,7 +163,7 @@ function App() {
             py={18}
             style={{ textTransform: "none", fontWeight: 700 }}
           >
-            🚀 Early Alpha v0.1.0 is now live
+            🚀 Early Alpha v0.0.1 is now live
           </Badge>
 
           <Stack gap="xl">
