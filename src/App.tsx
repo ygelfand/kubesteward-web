@@ -187,9 +187,9 @@ function App() {
             </Title>
             <Container size={750} p={0}>
               <Text size="xl" lh={1.6} c="dimmed" style={{ fontSize: "22px" }}>
-                A Kubernetes-native APIService, CLI controller, TUI, and
-                Dashboard designed for teams that demand absolute transparency
-                and zero-trust security.
+                A Kubernetes-native APIService, CLI + TUI, and Dashboard
+                designed for teams that demand absolute transparency and
+                zero-trust security.
               </Text>
             </Container>
           </Stack>
@@ -302,19 +302,19 @@ function App() {
                 icon: IconTerminal2,
                 title: "Terminal Proxying",
                 color: "blue",
-                text: "Full TTY capture for spawn, exec, and ephemeral containers. Replay sessions and track every keystroke with absolute precision.",
+                text: "Full TTY capture for spawn, exec, and ephemeral containers. KubeSteward records every stdin/stdout/stderr stream and extracts commands for searchable audit logs.",
               },
               {
                 icon: IconDatabaseSearch,
                 title: "SQL Policy Engine",
                 color: "cyan",
-                text: "Native PostgreSQL wire-proxy. Intercept queries in real-time, apply regex-based deny patterns, and prevent data exfiltration.",
+                text: "Native PostgreSQL wire-proxy that intercepts queries in real-time. Apply regex-based deny patterns to block dangerous commands like DROP or DELETE before they hit your database.",
               },
               {
                 icon: IconShieldLock,
                 title: "Zero-Trust Identity",
                 color: "indigo",
-                text: "Bootstrapped via CLI one-time codes. No long-lived tokens in the browser. Built entirely on your existing Kubernetes RBAC.",
+                text: "Built on Kubernetes API Aggregation and RBAC. Use one-time login codes to securely bootstrap web sessions from your CLI without long-lived browser tokens.",
               },
             ].map((feature, i) => (
               <Stack key={i} gap="xl">
@@ -347,6 +347,104 @@ function App() {
         </Container>
       </Box>
 
+      {/* Kubernetes-Native Policies */}
+      <Container size="lg" py={120}>
+        <Stack gap={60}>
+          <Stack align="center" gap="xs" ta="center">
+            <Title
+              order={2}
+              size={42}
+              fw={900}
+              style={{ letterSpacing: "-1px" }}
+            >
+              Kubernetes-Native Policies
+            </Title>
+            <Text size="xl" c="dimmed" style={{ maxWidth: 700 }}>
+              Define access targets using standard Kubernetes Custom Resources.
+              No more complex kubectl strings—just connect by name.
+            </Text>
+          </Stack>
+
+          <SimpleGrid cols={{ base: 1, md: 2 }} spacing={40}>
+            <Card
+              withBorder
+              radius="xl"
+              p={40}
+              bg="light-dark(white, var(--mantine-color-dark-7))"
+            >
+              <Group mb="xl">
+                <ThemeIcon size={54} radius="md" color="blue" variant="light">
+                  <IconTerminal2 size={32} />
+                </ThemeIcon>
+                <Box>
+                  <Text fw={900} size="22px">
+                    TerminalTarget
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    Policy-driven shell access
+                  </Text>
+                </Box>
+              </Group>
+              <Stack gap="sm">
+                <Text size="md" lh={1.6}>
+                  Configure how users connect to your pods. Support for:
+                </Text>
+                <Group gap="xs">
+                  <Badge variant="dot">Spawn Pods</Badge>
+                  <Badge variant="dot">Ephemeral Containers</Badge>
+                  <Badge variant="dot">Direct Exec</Badge>
+                </Group>
+                <Text size="md" mt="md" c="dimmed">
+                  Includes selection strategies like Round-Robin, Random, or
+                  Interactive choice.
+                </Text>
+              </Stack>
+            </Card>
+
+            <Card
+              withBorder
+              radius="xl"
+              p={40}
+              bg="light-dark(white, var(--mantine-color-dark-7))"
+            >
+              <Group mb="xl">
+                <ThemeIcon size={54} radius="md" color="cyan" variant="light">
+                  <IconDatabaseSearch size={32} />
+                </ThemeIcon>
+                <Box>
+                  <Text fw={900} size="22px">
+                    SQLTarget
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    Audited database access
+                  </Text>
+                </Box>
+              </Group>
+              <Stack gap="sm">
+                <Text size="md" lh={1.6}>
+                  Define secure gateways to your databases with:
+                </Text>
+                <Group gap="xs">
+                  <Badge variant="dot" color="cyan">
+                    Query Logging
+                  </Badge>
+                  <Badge variant="dot" color="cyan">
+                    Regex Blocking
+                  </Badge>
+                  <Badge variant="dot" color="cyan">
+                    RBAC Binding
+                  </Badge>
+                </Group>
+                <Text size="md" mt="md" c="dimmed">
+                  Manage database credentials securely via Kubernetes Secrets
+                  and OIDC subjects.
+                </Text>
+              </Stack>
+            </Card>
+          </SimpleGrid>
+        </Stack>
+      </Container>
+
       {/* Repositories Section */}
       <Container size="lg" py={120}>
         <Stack gap={60}>
@@ -363,17 +461,17 @@ function App() {
             {[
               {
                 label: "Core Backend",
-                desc: "The heart of KubeSteward. APIServer, Operator & CRDs built with Go.",
+                desc: "Go-based Aggregated API Server and Controller. Handles proxying, policy enforcement, and audit recording via Ent ORM.",
                 url: "kubesteward",
               },
               {
                 label: "CLI Tool",
-                desc: "Secure kubectl plugin and protocol client for terminal and SQL proxying.",
+                desc: "A powerful kubectl plugin for connecting to targets, managing sessions, and bootstrapping the Web UI.",
                 url: "kubesteward-cli",
               },
               {
                 label: "Management UI",
-                desc: "A rich React-based dashboard for monitoring, auditing, and analytics.",
+                desc: "Modern React dashboard for real-time monitoring, audit log exploration, and session lifecycle management.",
                 url: "kubesteward-ui",
               },
             ].map((repo) => (
