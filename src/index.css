@@ -8,3 +8,14 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-logo {
+  animation: float 6s ease-in-out infinite;
+}
+

@@ -30,6 +30,7 @@ import {
   IconMoon,
   IconExternalLink,
   IconZoomIn,
+  IconRocket,
 } from "@tabler/icons-react";
 
 function ThemeToggle() {
@@ -71,17 +72,17 @@ function App() {
     {
       src: "/images/dashboard_screenshot.png",
       title: "Live Dashboard",
-      desc: "Real-time overview of active sessions and targets.",
+      desc: "Real-time overview of active sessions and infrastructure health.",
     },
     {
       src: "/images/terminal_sessions_screenshot.png",
       title: "Shell Auditing",
-      desc: "Deep dive into terminal commands and output.",
+      desc: "Forensic-grade recording of every keystroke and command.",
     },
     {
       src: "/images/sql_sessions_screenshot.png",
       title: "SQL Visibility",
-      desc: "Monitor every database query and policy block.",
+      desc: "Layer 7 firewalling and query introspection for PostgreSQL and MySQL.",
     },
   ];
 
@@ -138,7 +139,7 @@ function App() {
                 variant="subtle"
                 color="gray"
                 component="a"
-                href="https://github.com/kubesteward/kubesteward"
+                href="https://github.com/ygelfand/kubesteward"
                 leftSection={<IconBrandGithub size={20} />}
                 visibleFrom="sm"
                 size="md"
@@ -152,89 +153,115 @@ function App() {
       </Box>
 
       {/* Hero Section */}
-      <Container size="lg" py={{ base: 80, md: 140 }}>
-        <Stack align="center" gap={40} ta="center">
-          <Badge
-            size="xl"
-            variant="light"
-            color="blue"
-            radius="xl"
-            px={24}
-            py={18}
-            style={{ textTransform: "none", fontWeight: 700 }}
-          >
-            🚀 Early Alpha v0.0.1 is now live
-          </Badge>
+      <Box style={{ position: "relative" }}>
+        {/* Modern Radial Gradient Background */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "100%",
+            height: "100%",
+            background:
+              "radial-gradient(circle at 50% -20%, light-dark(rgba(24, 100, 255, 0.1), rgba(24, 100, 255, 0.15)) 0%, transparent 65%)",
+            pointerEvents: "none",
+            zIndex: -1,
+          }}
+        />
+        <Container size="lg" py={{ base: 80, md: 160 }}>
+          <Stack align="center" gap={40} ta="center">
+            
+            <Box className="floating-logo" mb={-20}>
+              <img 
+                src="/images/kube_steward_transparent.png" 
+                alt="KubeSteward Robot" 
+                style={{ width: 220, height: 'auto', filter: 'drop-shadow(0 10px 30px rgba(59, 130, 246, 0.3))' }} 
+              />
+            </Box>
 
-          <Stack gap="xl">
-            <Title
-              style={{
-                fontSize: "clamp(48px, 10vw, 84px)",
-                lineHeight: 1,
-                fontWeight: 900,
-                letterSpacing: "-0.04em",
-              }}
+            <Badge
+              size="lg"
+              variant="outline"
+              color="blue"
+              radius="xl"
+              px={20}
+              py={14}
+              style={{ textTransform: "none", fontWeight: 600, border: '1px solid light-dark(var(--mantine-color-blue-2), var(--mantine-color-blue-8))' }}
             >
-              Kubernetes Audit <br />
-              <Text
-                component="span"
-                inherit
-                variant="gradient"
-                gradient={{ from: "blue.5", to: "cyan.4", deg: 45 }}
+              🚀 v0.1.0 Alpha Release is here
+            </Badge>
+
+            <Stack gap="xl">
+              <Title
+                style={{
+                  fontSize: "clamp(48px, 8vw, 84px)",
+                  lineHeight: 1.1,
+                  fontWeight: 900,
+                  letterSpacing: "-0.03em",
+                }}
               >
-                Redefined.
-              </Text>
-            </Title>
-            <Container size={750} p={0}>
-              <Text size="xl" lh={1.6} c="dimmed" style={{ fontSize: "22px" }}>
-                A Kubernetes-native APIService, CLI + TUI, and Dashboard
-                designed for teams that demand absolute transparency and
-                zero-trust security.
-              </Text>
-            </Container>
-          </Stack>
+                Privileged Access. <br />
+                <Text
+                  component="span"
+                  inherit
+                  variant="gradient"
+                  gradient={{ from: "blue.5", to: "cyan.4", deg: 45 }}
+                >
+                  Uncompromised.
+                </Text>
+              </Title>
+              <Container size={750} p={0}>
+                <Text size="xl" lh={1.6} c="dimmed" style={{ fontSize: "22px", textWrap: "balance" }}>
+                  The zero-trust gateway for terminal sessions and SQL databases.
+                  Replace shared credentials with ephemeral, audited, and policy-driven connections.
+                </Text>
+              </Container>
+            </Stack>
 
-          <Group gap="md" mt={20}>
-            <Button
-              size="xl"
-              radius="md"
-              variant="gradient"
-              gradient={{ from: "blue", to: "cyan" }}
-              component="a"
-              href="https://github.com/kubesteward/kubesteward"
-              leftSection={<IconBrandGithub size={24} />}
-              style={{ height: 60, paddingLeft: 35, paddingRight: 35 }}
-            >
-              Get Started
-            </Button>
-            <Button
-              size="xl"
-              radius="md"
-              variant="default"
-              rightSection={<IconArrowRight size={24} />}
-              style={{ height: 60, paddingLeft: 35, paddingRight: 35 }}
-            >
-              Documentation
-            </Button>
-          </Group>
-        </Stack>
-      </Container>
+            <Group gap="md" mt={20}>
+              <Button
+                size="xl"
+                radius="md"
+                variant="gradient"
+                gradient={{ from: "blue", to: "cyan" }}
+                component="a"
+                href="https://docs.kubesteward.com/installation"
+                leftSection={<IconRocket size={24} />}
+                style={{ height: 60, paddingLeft: 35, paddingRight: 35 }}
+              >
+                Get Started
+              </Button>
+              <Button
+                size="xl"
+                radius="md"
+                variant="default"
+                component="a"
+                href="https://docs.kubesteward.com"
+                rightSection={<IconArrowRight size={24} />}
+                style={{ height: 60, paddingLeft: 35, paddingRight: 35 }}
+              >
+                Documentation
+              </Button>
+            </Group>
+          </Stack>
+        </Container>
+      </Box>
 
       {/* Visual Audit Gallery */}
-      <Container size="lg" py={100}>
+      <Container size="lg" py={80}>
         <Stack gap={60}>
           <Stack align="center" gap="xs" ta="center">
             <Title
               order={2}
               size={48}
               fw={900}
-              style={{ letterSpacing: "-1px" }}
+              style={{ letterSpacing: "-1.5px" }}
             >
-              Visualizing the Proxy
+              Absolute Visibility.
             </Title>
             <Text size="xl" c="dimmed" style={{ maxWidth: 650 }}>
-              The management dashboard provides a crystal-clear, real-time view
-              of everything happening in your cluster.
+              KubeSteward intercepts and records every interaction at the protocol level, providing a forensic-grade audit trail.
             </Text>
           </Stack>
 
@@ -253,7 +280,7 @@ function App() {
                   overflow: "hidden",
                   cursor: "zoom-in",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: hoveredIndex === i ? "scale(1.03)" : "scale(1)",
+                  transform: hoveredIndex === i ? "translateY(-8px)" : "translateY(0)",
                   borderColor:
                     hoveredIndex === i
                       ? "var(--mantine-color-blue-filled)"
@@ -262,7 +289,7 @@ function App() {
               >
                 <Card.Section style={{ position: "relative" }}>
                   <AspectRatio ratio={16 / 10}>
-                    <Image src={shot.src} alt={shot.title} />
+                    <Image src={shot.src} alt={shot.title} fallbackSrc="https://placehold.co/600x400/1a1b1e/2c2e33?text=Preview+Coming+Soon" />
                   </AspectRatio>
                   {hoveredIndex === i && (
                     <Overlay color="#000" backgroundOpacity={0.1} center>
@@ -302,19 +329,19 @@ function App() {
                 icon: IconTerminal2,
                 title: "Terminal Proxying",
                 color: "blue",
-                text: "Full TTY capture for spawn, exec, and ephemeral containers. KubeSteward records every stdin/stdout/stderr stream and extracts commands for searchable audit logs.",
+                text: "Full TTY capture for spawn, exec, and ephemeral containers. Records every byte of stdin/stdout/stderr for searchable, replayable audit logs.",
               },
               {
                 icon: IconDatabaseSearch,
-                title: "SQL Policy Engine",
+                title: "SQL Firewall",
                 color: "cyan",
-                text: "Native PostgreSQL wire-proxy that intercepts queries in real-time. Apply regex-based deny patterns to block dangerous commands like DROP or DELETE before they hit your database.",
+                text: "Native wire-proxy for PostgreSQL and MySQL. Use deep parsing to block dangerous commands like DROP or DELETE before they reach your backend.",
               },
               {
                 icon: IconShieldLock,
                 title: "Zero-Trust Identity",
                 color: "indigo",
-                text: "Built on Kubernetes API Aggregation and RBAC. Use one-time login codes to securely bootstrap web sessions from your CLI without long-lived browser tokens.",
+                text: "Leverages Kubernetes API Aggregation and RBAC. Authenticate via CLI using existing OIDC/IAM providers without long-lived browser sessions.",
               },
             ].map((feature, i) => (
               <Stack key={i} gap="xl">
@@ -357,11 +384,11 @@ function App() {
               fw={900}
               style={{ letterSpacing: "-1px" }}
             >
-              Kubernetes-Native Policies
+              Native Configuration
             </Title>
             <Text size="xl" c="dimmed" style={{ maxWidth: 700 }}>
-              Define access targets using standard Kubernetes Custom Resources.
-              No more complex kubectl strings—just connect by name.
+              Manage access targets using standard Kubernetes Custom Resources.
+              Policy-as-code that integrates with your existing GitOps workflows.
             </Text>
           </Stack>
 
@@ -371,6 +398,7 @@ function App() {
               radius="xl"
               p={40}
               bg="light-dark(white, var(--mantine-color-dark-7))"
+              style={{ transition: 'transform 0.2s ease' }}
             >
               <Group mb="xl">
                 <ThemeIcon size={54} radius="md" color="blue" variant="light">
@@ -381,13 +409,13 @@ function App() {
                     TerminalTarget
                   </Text>
                   <Text size="sm" c="dimmed">
-                    Policy-driven shell access
+                    Secure shell definition
                   </Text>
                 </Box>
               </Group>
               <Stack gap="sm">
                 <Text size="md" lh={1.6}>
-                  Configure how users connect to your pods. Support for:
+                  Control how users connect to your pods with modes for:
                 </Text>
                 <Group gap="xs">
                   <Badge variant="dot">Spawn Pods</Badge>
@@ -395,8 +423,7 @@ function App() {
                   <Badge variant="dot">Direct Exec</Badge>
                 </Group>
                 <Text size="md" mt="md" c="dimmed">
-                  Includes selection strategies like Round-Robin, Random, or
-                  Interactive choice.
+                  Enforce TTLs, resource limits, and command white-lists per target.
                 </Text>
               </Stack>
             </Card>
@@ -406,6 +433,7 @@ function App() {
               radius="xl"
               p={40}
               bg="light-dark(white, var(--mantine-color-dark-7))"
+              style={{ transition: 'transform 0.2s ease' }}
             >
               <Group mb="xl">
                 <ThemeIcon size={54} radius="md" color="cyan" variant="light">
@@ -416,28 +444,27 @@ function App() {
                     SQLTarget
                   </Text>
                   <Text size="sm" c="dimmed">
-                    Audited database access
+                    Managed database connectivity
                   </Text>
                 </Box>
               </Group>
               <Stack gap="sm">
                 <Text size="md" lh={1.6}>
-                  Define secure gateways to your databases with:
+                  Secure database endpoints with:
                 </Text>
                 <Group gap="xs">
                   <Badge variant="dot" color="cyan">
-                    Query Logging
+                    Query Interception
                   </Badge>
                   <Badge variant="dot" color="cyan">
-                    Regex Blocking
+                    Human-in-the-loop Approval
                   </Badge>
                   <Badge variant="dot" color="cyan">
-                    RBAC Binding
+                    Credential Injection
                   </Badge>
                 </Group>
                 <Text size="md" mt="md" c="dimmed">
-                  Manage database credentials securely via Kubernetes Secrets
-                  and OIDC subjects.
+                  Mask sensitive data and block destructive DDL operations.
                 </Text>
               </Stack>
             </Card>
@@ -455,23 +482,23 @@ function App() {
             ta="center"
             style={{ letterSpacing: "-1px" }}
           >
-            Built for Modularity
+            Open Source & Modular
           </Title>
           <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl">
             {[
               {
                 label: "Core Backend",
-                desc: "Go-based Aggregated API Server and Controller. Handles proxying, policy enforcement, and audit recording via Ent ORM.",
+                desc: "Go-based APIService and Controller. Handles all proxying logic, SQL parsing, and audit persistence.",
                 url: "kubesteward",
               },
               {
                 label: "CLI Tool",
-                desc: "A powerful kubectl plugin for connecting to targets, managing sessions, and bootstrapping the Web UI.",
+                desc: "A powerful kubectl plugin for connecting to targets and managing session lifecycles.",
                 url: "kubesteward-cli",
               },
               {
                 label: "Management UI",
-                desc: "Modern React dashboard for real-time monitoring, audit log exploration, and session lifecycle management.",
+                desc: "React dashboard for live monitoring, session replay, and forensic investigation.",
                 url: "kubesteward-ui",
               },
             ].map((repo) => (
@@ -481,7 +508,7 @@ function App() {
                 padding={40}
                 radius="xl"
                 component="a"
-                href={`https://github.com/kubesteward/${repo.url}`}
+                href={`https://github.com/ygelfand/${repo.url}`}
                 style={{
                   transition: "all 0.2s ease",
                   cursor: "pointer",
@@ -536,8 +563,8 @@ function App() {
                 </Text>
               </Group>
               <Text size="md" c="dimmed" style={{ maxWidth: 400 }}>
-                Secure, audited access to your Kubernetes cluster. Designed for
-                security teams and cluster administrators.
+                High-fidelity auditing and secure shell & database access for Kubernetes.
+                Designed for the next generation of cloud-native infrastructure.
               </Text>
               <Text size="sm" c="dimmed" mt="xl">
                 © 2026 KubeSteward Authors. <br />
@@ -552,7 +579,7 @@ function App() {
               <Stack gap="xs">
                 <Text
                   component="a"
-                  href="https://github.com/kubesteward"
+                  href="https://github.com/ygelfand"
                   c="dimmed"
                   style={{ textDecoration: "none" }}
                 >
@@ -560,7 +587,7 @@ function App() {
                 </Text>
                 <Text
                   component="a"
-                  href="https://github.com/kubesteward/kubesteward"
+                  href="https://github.com/ygelfand/kubesteward"
                   c="dimmed"
                   style={{ textDecoration: "none" }}
                 >
@@ -568,23 +595,23 @@ function App() {
                 </Text>
                 <Text
                   component="a"
-                  href="https://github.com/kubesteward/kubesteward-cli"
+                  href="https://docs.kubesteward.com"
                   c="dimmed"
                   style={{ textDecoration: "none" }}
                 >
-                  CLI Tool
+                  Documentation
                 </Text>
               </Stack>
             </Stack>
 
             <Stack gap="lg">
               <Text fw={900} size="lg">
-                Community
+                Resources
               </Text>
               <Stack gap="xs">
                 <Text
                   component="a"
-                  href="https://github.com/kubesteward/kubesteward/issues"
+                  href="https://github.com/ygelfand/kubesteward/issues"
                   c="dimmed"
                   style={{ textDecoration: "none" }}
                 >
@@ -592,19 +619,11 @@ function App() {
                 </Text>
                 <Text
                   component="a"
-                  href="#"
+                  href="https://github.com/ygelfand/kubesteward-docs"
                   c="dimmed"
                   style={{ textDecoration: "none" }}
                 >
-                  Discussions
-                </Text>
-                <Text
-                  component="a"
-                  href="#"
-                  c="dimmed"
-                  style={{ textDecoration: "none" }}
-                >
-                  Contribution Guide
+                  Docs Repo
                 </Text>
               </Stack>
             </Stack>

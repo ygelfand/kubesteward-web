@@ -4,7 +4,7 @@
 
 KubeSteward is a Kubernetes-native platform for secure, audited access to your clusters. It provides a centralized proxy for terminal sessions and SQL queries, ensuring absolute transparency and zero-trust security.
 
-[View Landing Page](https://kubesteward.io) | [Main Repository](https://github.com/kubesteward/kubesteward)
+[View Landing Page](https://kubesteward.io) | [Main Repository](https://github.com/ygelfand/kubesteward)
 
 ## Key Highlights
 
@@ -19,10 +19,10 @@ KubeSteward is a Kubernetes-native platform for secure, audited access to your c
 
 KubeSteward is built for modularity across several repositories:
 
-- [**kubesteward**](https://github.com/kubesteward/kubesteward): Core Go-based Aggregated API Server, Operator, and CRDs.
-- [**kubesteward-cli**](https://github.com/kubesteward/kubesteward-cli): A powerful `kubectl` plugin for terminal and SQL proxying.
-- [**kubesteward-ui**](https://github.com/kubesteward/kubesteward-ui): The React-based management dashboard.
-- [**kubesteward-web**](https://github.com/kubesteward/kubesteward-web): (This repo) The official landing page.
+- [**kubesteward**](https://github.com/ygelfand/kubesteward): Core Go-based Aggregated API Server, Operator, and CRDs.
+- [**kubesteward-cli**](https://github.com/ygelfand/kubesteward-cli): A powerful `kubectl` plugin for terminal and SQL proxying.
+- [**kubesteward-ui**](https://github.com/ygelfand/kubesteward-ui): The React-based management dashboard.
+- [**kubesteward-web**](https://github.com/ygelfand/kubesteward-web): (This repo) The official landing page.
 
 ## Tech Stack (Landing Page)
 
